@@ -4,10 +4,14 @@
   box-sizing: border-box;
 }
 :root {
+  /* Light Mood Color */
   --color-white: #fff;
   --color-mercury: #e3e4f1;
   --color-greyGoose: #d1d2da;
   --color-mountainMist: #9495a5;
+
+  /* Dark Mood Color */
+  /* --color- */
 }
 .header-container {
   width: 100%;

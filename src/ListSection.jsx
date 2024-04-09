@@ -24,7 +24,7 @@ function ListSection({ data, setData }) {
   // {} items left
   const countActiveItems = () => {
     return data.filter(
-      (item, index) => isCheckedList.includes(index) && !item.completed
+      (item, index) => !isCheckedList.includes(index) && !item.completed
     ).length;
   };
 
@@ -42,9 +42,9 @@ function ListSection({ data, setData }) {
   const filteredData = data.filter((item) => {
     if (filter === "All") {
       return item;
-    } else if (filter === "Active") {
+    }if (filter === "Active") {
       return !item.completed;
-    } else if (filter === "Completed") {
+    }if (filter === "Completed") {
       return item.completed;
     }
     return true;
