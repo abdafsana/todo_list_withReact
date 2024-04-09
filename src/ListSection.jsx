@@ -4,7 +4,6 @@ import "./index.css";
 function ListSection({ data, setData }) {
   const [isCheckedList, setIsCheckedList] = useState([]);
 
-
   const toggleCompletion = (index) => {
     const updatedList = [...isCheckedList];
     if (updatedList.includes(index)) {
@@ -22,18 +21,21 @@ function ListSection({ data, setData }) {
     setData(newData);
   };
 
-// {} items left
+  // {} items left
   const countActiveItems = () => {
-    return data.filter((item, index) => isCheckedList.includes(index) && !item.completed).length;
+    return data.filter(
+      (item, index) => isCheckedList.includes(index) && !item.completed
+    ).length;
   };
 
   // Clear Completed
   const handleClearCompleted = () => {
-    const newData = data.filter((item, index) => !isCheckedList.includes(index) || item.completed);
+    const newData = data.filter(
+      (item, index) => !isCheckedList.includes(index) || item.completed
+    );
     setData(newData);
     setIsCheckedList([]);
   };
-
 
   const [filter, setFilter] = useState(data);
   // Filter item
@@ -48,7 +50,6 @@ function ListSection({ data, setData }) {
     return true;
   });
 
-
   return (
     <div className="list-container">
       <ul className="lists">
@@ -61,16 +62,27 @@ function ListSection({ data, setData }) {
                 checked={isCheckedList.includes(index)}
                 onChange={() => toggleCompletion(index)}
               />
-              <p className={isCheckedList.includes(index) || item.completed ? "text completed" : "text"}>
+              <p
+                className={
+                  isCheckedList.includes(index) || item.completed
+                    ? "text completed"
+                    : "text"
+                }
+              >
                 {item}
               </p>
-              <i className="fa-solid fa-xmark" onClick={() => removeData(index)}></i>
+              <i
+                className="fa-solid fa-xmark"
+                onClick={() => removeData(index)}
+              ></i>
             </div>
           </li>
         ))}
         <li className="list-item1">
           <ul className="list-footer">
-            <li className="list-footer--item"><p>{countActiveItems()} items left</p></li>
+            <li className="list-footer--item">
+              <p>{countActiveItems()} items left</p>
+            </li>
             <li className="list-footer--item">
               <ul className="mini-footer--list">
                 <li className="mini-footer--item">
@@ -80,7 +92,7 @@ function ListSection({ data, setData }) {
                   <p onClick={() => setFilter("Active")}>Active</p>
                 </li>
                 <li className="mini-footer--item">
-                  <p  onClick={() => setFilter("Completed")}>Completed</p>
+                  <p onClick={() => setFilter("Completed")}>Completed</p>
                 </li>
               </ul>
             </li>

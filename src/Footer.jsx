@@ -1,12 +1,12 @@
-import React from 'react'
-import "./index.css"
+import React from "react";
+import "./index.css";
 
-function Footer(){
+function Footer() {
   return (
-    <div className='footer'>
-       <p className='footer-text'>Drag and drop to reorder list</p>
+    <div className="footer">
+      <p className="footer-text">Drag and drop to reorder list</p>
     </div>
-  )
+  );
 }
 
 export default Footer;

@@ -27,35 +27,35 @@ function Header() {
       setInputValue("");
     }
     if (data.length > 0) {
-      document.querySelector('.list-item1').style.display = 'block';
+      document.querySelector(".list-item1").style.display = "block";
     } else {
-      document.querySelector('.list-item1').style.display = 'none';
+      document.querySelector(".list-item1").style.display = "none";
     }
-  }, [inputValue,data]);
+  }, [inputValue, data]);
 
   return (
     <>
-    <div className="header-container">
-      <div className="lightBackground">
-        <img src={BackgroundImage} alt="light mood background image" />
-        <div className="toDo-title">
-          <p className="todo-text">TO DO</p>
-          <i className="fa-solid fa-moon"></i>
+      <div className="header-container">
+        <div className="lightBackground">
+          <img src={BackgroundImage} alt="light mood background image" />
+          <div className="toDo-title">
+            <p className="todo-text">TO DO</p>
+            <i className="fa-solid fa-moon"></i>
+          </div>
+        </div>
+        <div className="header-input--div">
+          <input type="checkbox" className="todo-checkbox active-checkbox" />
+          <input
+            type="text"
+            placeholder="Create a new todo…"
+            className="header-input"
+            onChange={(e) => setInputValue(e.target.value)}
+            value={inputValue}
+            onKeyUp={handleKeyPress}
+          />
         </div>
       </div>
-      <div className="header-input--div">
-        <input type="checkbox" className="todo-checkbox active-checkbox" />
-        <input
-          type="text"
-          placeholder="Create a new todo…"
-          className="header-input"
-          onChange={(e) => setInputValue(e.target.value)}
-          value={inputValue}
-          onKeyUp={handleKeyPress}
-        />
-      </div>
-    </div>
-      <ListSection data={data} setData={setData}/>
+      <ListSection data={data} setData={setData} />
     </>
   );
 }
