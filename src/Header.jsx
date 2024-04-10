@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import "./assets/css/index.css";
 import { useState, useEffect } from "react";
 import BackgroundImage from "./assets/image/Bitmap.jpg";
 import ListSection from "./ListSection";
@@ -16,11 +16,11 @@ function Header() {
     }
   }
   // Input value
-  const handleKeyPress = (event) => {
+  function handleKeyPress(event) {
     if (event.key === "Enter") {
       AddData();
     }
-  };
+  }
 
   useEffect(() => {
     if (inputValue === undefined) {

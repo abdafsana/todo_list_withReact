@@ -9,9 +9,6 @@
   --color-mercury: #e3e4f1;
   --color-greyGoose: #d1d2da;
   --color-mountainMist: #9495a5;
-
-  /* Dark Mood Color */
-  /* --color- */
 }
 .header-container {
   width: 100%;
@@ -67,7 +64,7 @@
   font-size: 25px;
 }
 .active-checkbox:checked {
-  background: url("./assets/image/chck.png");
+  background: url("./src/assets/image/chck.png");
   border: none;
 }
 .text.completed {
@@ -170,4 +167,8 @@
   font-weight: 400;
   font-size: 14px;
   color: var(--color-mountainMist, #9495a5);
+}
+.mini-footer--item > p,
+.list-footer--item__p {
+  cursor: pointer;
 }

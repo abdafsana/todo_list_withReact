@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./index.css";
+import "./assets/css/index.css";
 
 function ListSection({ data, setData }) {
   const [isCheckedList, setIsCheckedList] = useState([]);
 
-  const toggleCompletion = (index) => {
+  function toggleCompletion(index) {
     const updatedList = [...isCheckedList];
     if (updatedList.includes(index)) {
       updatedList.splice(updatedList.indexOf(index), 1);
@@ -12,39 +12,41 @@ function ListSection({ data, setData }) {
       updatedList.push(index);
     }
     setIsCheckedList(updatedList);
-  };
+  }
 
   // rome list item
-  const removeData = (index) => {
+  function removeData(index) {
     const newData = [...data];
     newData.splice(index, 1);
     setData(newData);
-  };
+  }
 
   // {} items left
-  const countActiveItems = () => {
+  function countActiveItems() {
     return data.filter(
       (item, index) => !isCheckedList.includes(index) && !item.completed
     ).length;
-  };
+  }
 
   // Clear Completed
-  const handleClearCompleted = () => {
+  function handleClearCompleted() {
     const newData = data.filter(
       (item, index) => !isCheckedList.includes(index) || item.completed
     );
     setData(newData);
     setIsCheckedList([]);
-  };
+  }
 
   const [filter, setFilter] = useState(data);
   // Filter item
   const filteredData = data.filter((item) => {
     if (filter === "All") {
       return item;
-    }if (filter === "Active") {
+    }
+    if (filter === "Active") {
       return !item.completed;
-    }if (filter === "Completed") {
+    }
+    if (filter === "Completed") {
       return item.completed;
     }
     return true;
@@ -97,7 +99,7 @@ function ListSection({ data, setData }) {
               </ul>
             </li>
             <li className="list-footer--item" onClick={handleClearCompleted}>
-              <p>Clear Completed</p>
+              <p className="list-footer--item__p">Clear Completed</p>
             </li>
           </ul>
         </li>

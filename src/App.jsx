@@ -1,12 +1,12 @@
 import Footer from "./Footer";
 import Header from "./Header";
-import "./index.css";
+import "./assets/css/index.css";
 function App() {
   return (
-    <body>
+    <div>
       <Header />
       <Footer />
-    </body>
+    </div>
   );
 }
 
