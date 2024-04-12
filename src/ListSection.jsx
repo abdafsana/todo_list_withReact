@@ -4,12 +4,12 @@ import "./assets/css/index.css";
 function ListSection({ data, setData }) {
   const [isCheckedList, setIsCheckedList] = useState([]);
 
-  function toggleCompletion(index) {
+  function toggleCompletion(item) {
     const updatedList = [...isCheckedList];
-    if (updatedList.includes(index)) {
-      updatedList.splice(updatedList.indexOf(index), 1);
+    if (updatedList.includes(item)) {
+      updatedList.splice(updatedList.indexOf(item), 1);
     } else {
-      updatedList.push(index);
+      updatedList.push(item);
     }
     setIsCheckedList(updatedList);
   }
@@ -24,31 +24,31 @@ function ListSection({ data, setData }) {
   // {} items left
   function countActiveItems() {
     return data.filter(
-      (item, index) => !isCheckedList.includes(index) && !item.completed
+      (item) => !isCheckedList.includes(item)
     ).length;
   }
 
   // Clear Completed
   function handleClearCompleted() {
     const newData = data.filter(
-      (item, index) => !isCheckedList.includes(index) || item.completed
+      (item) => !isCheckedList.includes(item)
     );
     setData(newData);
     setIsCheckedList([]);
   }
 
-  const [filter, setFilter] = useState(true);
+  const [filter, setFilter] = useState("");
   // Filter item
-  const filteredData =data.filter((item,index) => {
+  const filteredData =data.filter((item) => {
     // setFilter(data);
     if (filter === "All") {
       return data;
     }
-    if (filter === "Active") {
-      return !isCheckedList.includes(index) && !item.checked;
+    else if (filter === "Active") {
+      return !isCheckedList.includes(item);
     }
-    if (filter === "Completed") {
-      return isCheckedList.includes(index) || item.checked;
+    else if (filter === "Completed") {
+      return isCheckedList.includes(item);
     }
     return true;
   });
@@ -62,12 +62,12 @@ function ListSection({ data, setData }) {
               <input
                 type="checkbox"
                 className="todo-checkbox active-checkbox"
-                checked={isCheckedList.includes(index)}
-                onChange={() => toggleCompletion(index)}
+                checked={isCheckedList.includes(item)}
+                onChange={() => toggleCompletion(item)}
               />
               <p
                 className={
-                  isCheckedList.includes(index) || item.completed
+                  isCheckedList.includes(item)
                     ? "text completed"
                     : "text"
                 }
@@ -76,7 +76,7 @@ function ListSection({ data, setData }) {
               </p>
               <i
                 className="fa-solid fa-xmark"
-                onClick={() => removeData(index)}
+                onClick={() => removeData(item)}
               ></i>
             </div>
           </li>
