@@ -7,10 +7,11 @@ import ListSection from "./ListSection";
 function Header() {
   const [inputValue, setInputValue] = useState("");
   const [data, setData] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useState(false); 
 
   // Add List
   function AddData() {
-    if (!inputValue == "") {
+    if (inputValue.trim() !== "") {
       setData([...data, inputValue]);
       setInputValue("");
     }
@@ -33,16 +34,26 @@ function Header() {
     }
   }, [inputValue, data]);
 
+
+  function toggleDarkMode() {
+    setIsDarkMode(!isDarkMode);
+  }
+
+  useEffect(() => {
+    document.body.classList.toggle("dark-theme", isDarkMode);
+  }, [isDarkMode]);
+
   return (
     <>
       <div className="header-container">
         <div className="lightBackground">
-          <img src={BackgroundImage} alt="light mood background image" />
           <div className="toDo-title">
             <p className="todo-text">TO DO</p>
-            <i className="fa-solid fa-moon"></i>
+            <i className={isDarkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"}  onClick={toggleDarkMode}></i>
           </div>
         </div>
+
+
         <div className="header-input--div">
           <input type="checkbox" className="todo-checkbox active-checkbox" />
           <input

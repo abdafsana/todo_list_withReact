@@ -37,17 +37,18 @@ function ListSection({ data, setData }) {
     setIsCheckedList([]);
   }
 
-  const [filter, setFilter] = useState(data);
+  const [filter, setFilter] = useState(true);
   // Filter item
-  const filteredData = data.filter((item) => {
+  const filteredData =data.filter((item,index) => {
+    // setFilter(data);
     if (filter === "All") {
-      return item;
+      return data;
     }
     if (filter === "Active") {
-      return !item.completed;
+      return !isCheckedList.includes(index) && !item.checked;
     }
     if (filter === "Completed") {
-      return item.completed;
+      return isCheckedList.includes(index) || item.checked;
     }
     return true;
   });
